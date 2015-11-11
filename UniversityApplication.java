@@ -22,10 +22,6 @@ import java.util.*;
 import javax.swing.JOptionPane;
 
 public class UniversityApplication {
-
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		Map<Integer, Student> studentsRecords = new HashMap<Integer, Student>();
 		String menu ="1- Add Student\n2-Show a student grade\n3-Exit.";

@@ -13,7 +13,8 @@ import java.util.*;
 
 public class Student {
 	public final static int MAX = 100;
-	public final static String[] COURSE_LIST = {"IT106","IT206" , "IT306","IT212","IT213","IT214","COMM100","MATH112","IT293"};
+	//public final static String[] COURSE_LIST = {"IT106","IT206" , "IT306","IT212","IT213","IT214","COMM100","MATH112","IT293"};
+	//List is still used by the implementation class. It can be replaced by using a loop and printing all keys from courseList.
 	public final static String LIST= "IT106,IT206,IT306,IT212,IT213,IT214,COMM100,MATH112,IT293";
 	Map<String, String> courseList = new Hashtable<String, String>(){{
 		put("IT106", "IT106");
@@ -26,10 +27,10 @@ public class Student {
 		put("COMM100", "COMM100");
 		put("MATH112", "MATH112");
 	}};
-	Map<String, Double> courseGrades = new Hashtable<String, Double>();
 	private String name; 
 	private String address; 
 	private String major;
+	Map<String, Double> courseGrades = new Hashtable<String, Double>();
 	private int id; 
 	private int numCourses;
 	private static int totalStudent; 
@@ -44,18 +45,22 @@ public class Student {
 	public void setMajor(String major) {this.major = major; }
 	
 	public boolean setCourse(double grade, String course){
-		if(numCourses >= MAX) return false;
+		if(numCourses >= MAX){
+			return false;
+		}
 		//If statement to check if the course to be added is part of the course list.
-		if(!courseList.containsValue(course)){
+		//The toUpperCase allows the user to enter the course number in lower case without errors.
+		if(!courseList.containsValue(course.toUpperCase())){
 			return false;
 		}
 		else{
 			//If the course is valid then place it inside the hash table and increment the numCourses.
-			courseGrades.put(course, grade);
+			//The course will be store in upper case to match the format of the key.
+			courseGrades.put(course.toUpperCase(), grade);
 			numCourses++;
 			return true;
 		}
-		/**
+		/**For loop no longer needed, so we can delete this code.
 		for(int i=0; i<COURSE_LIST.length; i++){
 			if(COURSE_LIST[i].equalsIgnoreCase(course)){
 				//courseGrades[numCourses]=grade;
@@ -73,21 +78,24 @@ public class Student {
 	public int getId(){ return id;}
 	
 	public double getGrade(String course) {
-		//If statement to check if the course to be added is part of the course list.
-		if(!courseList.containsValue(course)){
+		//If statement to if the student has that course in their hash table. The toUpperCase
+		//allows the user to enter the course number in lower case without errors. The contains key
+		//is used, because if there is no key then there is no value.
+		if(!courseGrades.containsKey(course.toUpperCase())){
 			return -1;
 		}
+		//If the course is in the list then the grade is returned. The toUpperCase
+		//allows for the retrieval of the grade even the user used lower case letters.
 		else{
-			return courseGrades.get(course);
+			return courseGrades.get(course.toUpperCase());
 		}
 		
-		/**
+		/** For loop no longer needed, so we can delete this code.
 		for(int i= 0;i<COURSE_LIST.length; i++){
 			if(COURSE_LIST[i].equalsIgnoreCase(course)){
 				double grade = courseGrades[i]; 
 				return grade;
 			}
 		}*/
-		
 	}
 }
