@@ -1,7 +1,7 @@
 /**
- * Group Member 1: Luis Velascco - Email:  GNumber:  
- * Group Member 2: Larry Hong - Email:  GNumber: 
- * Group Member 3: Peter Alvarado Nunez - Email:  GNumber:
+ * Group Member 1: Luis Velascco 
+ * Group Member 2: Larry Hong
+ * Group Member 3: Peter Alvarado Nunez
  * Group Leader: Larry Hong
  * Date: 11-12-2015
  * Course: IT 306 - 001
