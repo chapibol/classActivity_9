@@ -13,8 +13,6 @@ import java.util.*;
 
 public class Student {
 	public final static int MAX = 100;
-	//public final static String[] COURSE_LIST = {"IT106","IT206" , "IT306","IT212","IT213","IT214","COMM100","MATH112","IT293"};
-	//List is still used by the implementation class. It can be replaced by using a loop and printing all keys from courseList.
 	public final static String LIST= "IT106,IT206,IT306,IT212,IT213,IT214,COMM100,MATH112,IT293";
 	Map<String, String> courseList = new Hashtable<String, String>(){{
 		put("IT106", "IT106");
@@ -60,14 +58,6 @@ public class Student {
 			numCourses++;
 			return true;
 		}
-		/**For loop no longer needed, so we can delete this code.
-		for(int i=0; i<COURSE_LIST.length; i++){
-			if(COURSE_LIST[i].equalsIgnoreCase(course)){
-				//courseGrades[numCourses]=grade;
-				//courses[numCourses++]=course;
-				return true; 
-			}
-		}*/
 	}
 	
 	public String getName() { return name; }
@@ -78,9 +68,9 @@ public class Student {
 	public int getId(){ return id;}
 	
 	public double getGrade(String course) {
-		//If statement to if the student has that course in their hash table. The toUpperCase
-		//allows the user to enter the course number in lower case without errors. The contains key
-		//is used, because if there is no key then there is no value.
+		//If statement to check if the student has that course in their hash table. The toUpperCase
+		//allows the user to enter the course number in lower case without causing errors. The contains key
+		//is used, because if there is no key then there is no grade associated with that course.
 		if(!courseGrades.containsKey(course.toUpperCase())){
 			return -1;
 		}
@@ -89,13 +79,5 @@ public class Student {
 		else{
 			return courseGrades.get(course.toUpperCase());
 		}
-		
-		/** For loop no longer needed, so we can delete this code.
-		for(int i= 0;i<COURSE_LIST.length; i++){
-			if(COURSE_LIST[i].equalsIgnoreCase(course)){
-				double grade = courseGrades[i]; 
-				return grade;
-			}
-		}*/
 	}
 }
